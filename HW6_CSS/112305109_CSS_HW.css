@@ -1,0 +1,189 @@
+body{
+	font-family: :Arial, sans-serif;
+	background-color: white;
+	disply: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20 px;
+	min-height: 100vh;
+	margin:0;
+}
+
+.main-container{
+	width: 1000px;
+	max-width: 95%;
+	background-color: lightgrey;
+	display:flex;
+	border-radius:8px;
+	box-shadow:0 4px 10px;
+	overflow: hidden;
+}
+
+.left{
+	display: flex;
+	flex-direction: column;
+	flex-basis: 30%;
+	background-color:yellow;
+}
+
+.photo img{
+	width:100%;
+	display: block;
+}
+
+.text-content{
+	padding: 5px;
+	flex-grow: 1;
+}
+
+.text-content h2{
+	margin-top:0;
+	margin-bottom: 5px;
+}
+
+.text-content .subtitle{
+	font-size: 1.1em;
+	color: black;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.text-content h3{
+	border-bottom: 2px solid black;
+	padding-bottom: 1px;
+	margin-top: 10px;
+}
+
+.logo-container{
+	text-align: center;
+	margin-top: 50px;
+}
+
+.logo-container img{
+	max-width: 150px;
+	opacity: 0.7;
+}
+
+.right{
+	flex-basis:70%;
+	padding: 30px;
+}
+
+.section{
+	margin-bottom: 40px;
+}
+
+.section-title{
+	margin-top:0px;
+	margin-bottom: 8px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid black;
+}
+
+.timeline-item{
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.timeline-item .year{
+	flex-basis: 120px;
+	font-weight: bold;
+	color: black;
+}
+
+.timeline-item .description{
+	flex: 1;
+	color: black;
+}
+
+.tag{
+	display: inline-block;
+	background-color: yellow;
+	color: black;
+	padding: 5px 12px;
+	border-radius: 10px;
+	margin: 4px;
+	font-size: 0.9em;
+}
+
+.two-column-container{
+	display: flex;
+	gap: 20px;
+}
+
+.hw-column,
+.lab-column{
+	flex:1;
+	background-color:lightyellow;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.hw-column h3,
+.lab-column h3{
+	margin-top: 0;
+	border-bottom: 2px solid black;
+	paddimg-bottom: 5px;
+}
+
+.hw-column ul,
+.lab-column ul{
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.hw-column li,
+.lab-column li{
+	margin-bottom: 8px;
+}
+
+.hw-column a,
+.lab-column a{
+	text-decoration: underline;
+	color: black;
+	font-weight: bold;
+}
+
+.hw-column a:hover,
+.lab-column a:hover{
+	text-decoration: underline;
+	color: brown;
+}
+
+.music-row{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	
+}
+
+.music-item{
+	flex-basis: 120px;
+	text-decoration: none;
+	color: black;
+}
+
+.music-item img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.music-item p{
+	margin: 8px 0 0;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.music-item:hover{
+	color:brown;
+}
+
+.music-note{
+	margin-top: 20px;
+	text-align: center;
+	font-style: italic;
+	color: black;
+}
