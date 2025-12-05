@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h2>112305109_1A2B</h2>
+	<p>
+		Emter 4 unique numbers:
+		<input type="text" id="Guess">
+		<button onclick="play()">Guess!</button>
+	</p>
+
+	<div id="record" style="border-top:1px; padding-top:10px;">
+		<strong>Game Record:</strong>
+		<div id="history"></div>
+	</div>
+
+	<script>
+		var answer = inputanswer();
+		var count = 0;
+
+		function inputanswer(){
+			var nums = [0,1,2,3,4,5,6,7,8,9];
+			var ans = "";
+			for (var i=0; i<4; i++){
+				var idx = Math.floor(Math.random() * nums.length);
+				ans += nums[idx];
+				nums.splice(idx,1);
+			}
+
+			return ans;
+		}
+
+		function play(){
+			var input = document.getElementById("Guess");
+			var guess = input.value;
+
+			if(!isValid(guess)){
+				alert("格式錯誤!");
+				input.value = "";
+				return;
+			}
+
+			count++;
+			var result = check(guess, answer);
+			var history = document.getElementById("history");
+			history.innerHTML += "第" + count + "次" + guess + " -> " + result + "<br>";
+
+			if(result == "4A0B"){
+				alert("恭喜!總共猜了 "+ count + " 次");
+				reset();
+				return;
+			}
+
+			input.value="";
+
+
+		}
+
+		function isValid(str){
+			if(str.length !==4)return false;
+			if(isNaN(str))return false;
+			if(new Set(str).size !== 4)return false;
+
+			return true;
+		}
+
+		function check(guess, ans){
+			var a=0 , b=0;
+			for(var i = 0; i<4; i++){
+				if(guess[i] == ans[i] ){
+					a++
+				}else if(ans.includes(guess[i])){
+					b++;
+				}
+			}
+
+			return a + "A" + b + "B";
+		}
+
+		function reset(){
+			answer = inputanswer();
+			count = 0
+			document.getElementById("history").innerHTML="";
+			document.getElementById("Guess").value="";
+		}
+
+
+
+
+
+	</script>
+
+</body>
+</html>
