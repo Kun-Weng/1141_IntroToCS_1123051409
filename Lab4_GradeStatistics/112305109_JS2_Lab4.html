@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Grade Statistic</title>
+	<link rel="stylesheet" href="112305109_JS2_Lab4.css">
+</head>
+<body>
+	<h1 style="text-align: center;">Grade Statistic</h1>
+
+	<div class="input_container">
+		<input type="number" id="mathInput" placeholder="Math">
+		<input type="number" id="englishInput" placeholder="English">
+		<button id="submitBtn">Submit</button>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Math</th>
+				<th>English</th>
+				<th>Average</th>
+			</tr>
+		</thead>
+		<tbody id="gradeBody"></tbody>
+		<tfoot>
+			<tr>
+				<th>Average</th>
+				<th id="mathAvg">0.00</th>
+				<th id="engAvg">0.00</th>
+				<th id="totalAvg">0.00</th>
+			</tr>
+		</tfoot>
+	</table>
+
+	<script>
+		const mathInput = document.getElementById("mathInput")
+		const englishInput = document.getElementById("englishInput")
+		const submitBtn = document.getElementById("submitBtn")
+		const gradeBody = document.getElementById("gradeBody")
+
+		let rowCount = 0;
+
+		submitBtn.addEventListener("click",function(){
+
+			const mathScore = parseFloat(mathInput.value);
+			const engScore = parseFloat(englishInput.value);
+
+			rowCount++;
+
+			const rowAvg = (mathScore+engScore) /2;
+			const newRow = document.createElement("tr");
+
+			newRow.innerHTML =`
+        	<td>${rowCount}</td>
+        	<td>${mathScore}</td>
+        	<td>${engScore}</td>
+        	<td>${rowAvg.toFixed(2)}</td> `;
+				
+			gradeBody.appendChild(newRow);
+
+    		mathInput.value = "";
+    		englishInput.value = "";
+
+    		updateColumnAverages();
+			});
+
+			function updateColumnAverages() {
+    			const rows = gradeBody.querySelectorAll("tr");
+    
+    			let totalMath = 0;
+    			let totalEng = 0;
+    			const count = rows.length;
+
+    		
+
+    			rows.forEach(row => {
+        			totalMath += parseFloat(row.cells[1].innerText);
+        			totalEng += parseFloat(row.cells[2].innerText);
+    			});
+
+    			const avgMath = totalMath / count;
+    			const avgEng = totalEng / count;
+    			const avgTotal = (avgMath + avgEng) / 2;
+
+   				 document.getElementById("mathAvg").innerText = avgMath.toFixed(2);
+    			document.getElementById("engAvg").innerText = avgEng.toFixed(2);
+    			document.getElementById("totalAvg").innerText = avgTotal.toFixed(2);
+				}
+		
+	</script>
+
+
+
+</body>
+</html>
